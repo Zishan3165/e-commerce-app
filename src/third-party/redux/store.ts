@@ -1,10 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { fakeStoreApi } from './fakestoreApi';
+import cartReducer, { CartState } from './reducers/cartReducer';
+import authReducer, { AuthState } from './reducers/authReducer';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    cart: cartReducer,
+    auth: authReducer,
+    [fakeStoreApi.reducerPath]: fakeStoreApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(fakeStoreApi.middleware),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type RootState = {
+  cart: CartState;
+  auth: AuthState;
+  [fakeStoreApi.reducerPath]: ReturnType<typeof fakeStoreApi.reducer>;
+};
+
 export type AppDispatch = typeof store.dispatch;
