@@ -24,27 +24,29 @@ function App() {
         <SnackbarProvider>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/categories/:id" element={<ProductsByCategory />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/cart"
-              element={
-                <PrivateRoute>
-                  <Cart />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/checkout"
-              element={
-                <PrivateRoute>
-                  <Checkout />
-                </PrivateRoute>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <main>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/categories/:id" element={<ProductsByCategory />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/cart"
+                element={
+                  <PrivateRoute>
+                    <Cart />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <PrivateRoute>
+                    <Checkout />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </main>
           </Routes>
         </SnackbarProvider>
       </Router>

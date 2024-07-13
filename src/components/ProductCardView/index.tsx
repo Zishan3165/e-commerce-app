@@ -17,7 +17,7 @@ const ProductCardView: React.FC<ProductCardViewProps> = ({ product }) => {
 
   return (
     <div className="border border-gray-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
-      <img alt="ecommerce" className="object-contain w-full h-48 p-4" src={product.image} />
+      <img alt={product.description} className="object-contain w-full h-48 p-4" src={product.image} />
       <div className="p-4">
         <h3 className="text-indigo-500 text-xs tracking-widest title-font mb-1">
           {capitalizeEachWord(product.category)}

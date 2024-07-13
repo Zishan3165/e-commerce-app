@@ -52,7 +52,7 @@ const ProductDetails: React.FC = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img
-            alt={data?.title}
+            alt={data?.title || 'Image of a product'}
             className="lg:w-1/2 w-full lg:h-auto h-64  object-contain max-h-[600px] object-center rounded"
             src={data?.image}
           />

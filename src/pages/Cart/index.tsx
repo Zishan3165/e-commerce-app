@@ -35,7 +35,7 @@ const Cart: React.FC = () => {
                     <img
                       src={item.product.image}
                       className="w-full h-full object-contain cursor-pointer"
-                      alt="Product"
+                      alt={item.product.title}
                       onClick={() => navigate(`/products/${item.product.id}`)}
                     />
                   </div>
