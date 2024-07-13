@@ -45,6 +45,9 @@ const ProductList: React.FC = () => {
 
   return (
     <section className="text-gray-600 body-font">
+      <div className="flex flex-col text-center w-full">
+        <h2 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">Popular Products</h2>
+      </div>
       <div className="container px-5 py-24 mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {displayedProducts.map((product) => (

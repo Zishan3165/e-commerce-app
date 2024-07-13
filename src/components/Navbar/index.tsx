@@ -68,7 +68,9 @@ const Navbar = () => {
             )}
           </div>
         </nav>
-        <Search />
+        <div className="w-full lg:max-w-xl lg:ml-6 mt-4 lg:mt-0">
+          <Search />
+        </div>
         <div className="flex items-center space-x-4 mt-4 lg:mt-0 lg:ml-auto">
           <Link to="/cart" className="text-center text-gray-700 hover:text-primary transition relative">
             <div className="text-2xl">

@@ -15,7 +15,12 @@ const useAuth = () => {
     try {
       const result = await login({ username, password }).unwrap();
       dispatch(loginSuccess({ token: result.token }));
-      enqueueSnackbar({ message: 'Login successful!', variant: 'success', persist: false });
+      enqueueSnackbar({
+        message: 'Login successful!',
+        variant: 'success',
+        persist: false,
+        anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+      });
       navigate('/');
     } catch (error) {
       console.error('Failed to login:', error);
@@ -30,7 +35,12 @@ const useAuth = () => {
 
   const logoutUser = () => {
     dispatch(logout());
-    enqueueSnackbar({ message: 'Logout successful!', variant: 'success', persist: false });
+    enqueueSnackbar({
+      message: 'Logout successful!',
+      variant: 'success',
+      persist: false,
+      anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+    });
     navigate('/login');
   };
 

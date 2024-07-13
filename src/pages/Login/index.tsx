@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import useAuth from './../../hooks/useAuth';
 
+interface FormValues {
+  username: string;
+  password: string;
+}
+
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
   const { loginUser, isLoading, isError } = useAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    loginUser(username, password);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    loginUser(data.username, data.password);
   };
 
   return (
@@ -25,41 +33,39 @@ const Login: React.FC = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   Your username
                 </label>
                 <input
-                  type="username"
+                  {...register('username', { required: 'Username is required' })}
+                  type="text"
                   name="username"
                   id="username"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@domain.com"
-                  required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
                 />
+                {errors.username && <span className="text-red-500 text-sm">{errors.username.message}</span>}
               </div>
               <div className="relative">
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                   Password
                 </label>
                 <input
+                  {...register('password', { required: 'Password is required' })}
                   type={showPassword ? 'text' : 'password'}
                   name="password"
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 pr-10"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className="absolute inset-y-0 right-0 top-8 flex items-center pr-3">
                   <button type="button" className="text-gray-500 dark:text-gray-300" onClick={togglePasswordVisibility}>
                     {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
                   </button>
                 </div>
+                {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
               </div>
               <button
                 type="submit"
