@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../../third-party/redux/fakestoreApi';
-import { truncateString } from './../../utils';
+import { capitalizeEachWord, truncateString } from './../../utils';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import useCart from './../../hooks/useCart';
 
@@ -19,7 +19,9 @@ const ProductCardView: React.FC<ProductCardViewProps> = ({ product }) => {
     <div className="border border-gray-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
       <img alt="ecommerce" className="object-contain w-full h-48 p-4" src={product.image} />
       <div className="p-4">
-        <h3 className="text-indigo-500 text-xs tracking-widest title-font mb-1">{product.category}</h3>
+        <h3 className="text-indigo-500 text-xs tracking-widest title-font mb-1">
+          {capitalizeEachWord(product.category)}
+        </h3>
         <h2 className="text-gray-900 title-font text-lg font-medium">{truncateString(product.title)}</h2>
         <p className="mt-1 text-green-600 font-semibold">${product.price.toFixed(2)}</p>
         <div className="flex items-center justify-between mt-4">
@@ -47,7 +49,7 @@ const ProductCardView: React.FC<ProductCardViewProps> = ({ product }) => {
           )}
           <button
             className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition duration-300"
-            onClick={() => navigate(`products/${product.id}`)}
+            onClick={() => navigate(`/products/${product.id}`)}
           >
             View
           </button>
