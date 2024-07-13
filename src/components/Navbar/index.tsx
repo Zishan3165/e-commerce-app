@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="py-4 shadow-sm bg-white sticky top-0 left-0 w-full z-50">
+    <header className="py-4 px-1 shadow-sm bg-white sticky top-0 left-0 w-full z-50">
       <div className="container mx-auto flex items-center justify-between flex-wrap">
         <div className="flex items-center justify-between w-full lg:w-auto">
           <Link to="/" className="text-xl font-bold text-gray-700">
@@ -55,7 +55,7 @@ const Navbar = () => {
                     {categories?.map((category) => (
                       <Link
                         key={category}
-                        to={`/category/${category}`}
+                        to={`/categories/${category}`}
                         className="block text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-md"
                         onClick={toggleMenu}
                       >
@@ -71,7 +71,7 @@ const Navbar = () => {
         <div className="w-full lg:max-w-xl lg:ml-6 mt-4 lg:mt-0">
           <Search />
         </div>
-        <div className="flex items-center space-x-4 mt-4 lg:mt-0 lg:ml-auto">
+        <div className="flex items-center space-x-4 mt-4 lg:mt-0 lg:ml-auto mx-auto sm:mx-0">
           <Link to="/cart" className="text-center text-gray-700 hover:text-primary transition relative">
             <div className="text-2xl">
               <ShoppingBagIcon className="h-6 w-6" />

@@ -47,7 +47,7 @@ const Search: React.FC = () => {
   );
 
   return (
-    <div className="flex px-4 py-3 rounded-md border-2 border-blue-500 overflow-hidden w-1/2 mx-auto font-[sans-serif]">
+    <div className="flex px-4 py-3 rounded-md border-2 border-blue-500 overflow-hidden mx-auto font-[sans-serif]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 192.904 192.904"
