@@ -27,6 +27,12 @@ const Cart: React.FC = () => {
       <h1 className="text-3xl font-bold text-gray-800 text-center">Shopping Cart</h1>
       <div className="grid md:grid-cols-3 gap-8 mt-16">
         <div className="md:col-span-2 space-y-4">
+          {cartItems.length === 0 && (
+            <div className="text-center py-24">
+              <h2 className="text-2xl font-semibold text-gray-700">Cart is empty</h2>
+              <p className="text-gray-500 mt-2">Please add items to the card to proceed</p>
+            </div>
+          )}
           {cartItems.map((item) => (
             <div key={item.id}>
               <div className="grid grid-cols-3 items-start gap-4">
@@ -92,7 +98,8 @@ const Cart: React.FC = () => {
           <div className="mt-6 space-y-3">
             <button
               type="button"
-              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-primary hover:bg-primary-dark text-white rounded-md"
+              disabled={cartItems.length === 0}
+              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-primary hover:bg-primary-dark text-white rounded-md disabled:bg-gray-400 disabled:cursor-not-allowed"
               onClick={() => navigate('/checkout')}
             >
               Checkout

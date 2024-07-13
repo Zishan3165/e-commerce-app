@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
@@ -32,6 +32,13 @@ const Checkout: React.FC = () => {
     setCardData(cartItems);
     handleClearCart();
   };
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      console.log('No items in the cart, redirecting to home page.');
+      navigate('/');
+    }
+  }, [cartItems, navigate]);
 
   return (
     <div className="font-[sans-serif] bg-white">
@@ -99,7 +106,7 @@ const Checkout: React.FC = () => {
                               {...register('firstName', { required: 'First Name is required' })}
                               type="text"
                               placeholder="First Name"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.firstName && (
                               <span className="text-red-500 text-sm">{errors.firstName.message}</span>
@@ -110,7 +117,7 @@ const Checkout: React.FC = () => {
                               {...register('lastName', { required: 'Last Name is required' })}
                               type="text"
                               placeholder="Last Name"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.lastName && <span className="text-red-500 text-sm">{errors.lastName.message}</span>}
                           </div>
@@ -122,7 +129,7 @@ const Checkout: React.FC = () => {
                               })}
                               type="email"
                               placeholder="Email"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
                           </div>
@@ -134,7 +141,7 @@ const Checkout: React.FC = () => {
                               })}
                               type="tel"
                               placeholder="Phone No."
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.phoneNo && <span className="text-red-500 text-sm">{errors.phoneNo.message}</span>}
                           </div>
@@ -148,7 +155,7 @@ const Checkout: React.FC = () => {
                               {...register('addressLine', { required: 'Address Line is required' })}
                               type="text"
                               placeholder="Address Line"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.addressLine && (
                               <span className="text-red-500 text-sm">{errors.addressLine.message}</span>
@@ -159,7 +166,7 @@ const Checkout: React.FC = () => {
                               {...register('city', { required: 'City is required' })}
                               type="text"
                               placeholder="City"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.city && <span className="text-red-500 text-sm">{errors.city.message}</span>}
                           </div>
@@ -168,7 +175,7 @@ const Checkout: React.FC = () => {
                               {...register('state', { required: 'State is required' })}
                               type="text"
                               placeholder="State"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.state && <span className="text-red-500 text-sm">{errors.state.message}</span>}
                           </div>
@@ -177,7 +184,7 @@ const Checkout: React.FC = () => {
                               {...register('zipCode', { required: 'Zip Code is required' })}
                               type="text"
                               placeholder="Zip Code"
-                              className="px-4 py-3 bg-gray-100 focus:bg-transparent text-gray-800 w-full text-sm rounded-md focus:outline-blue-600"
+                              className="px-4 py-3 bg-white border border-gray-300 focus:bg-transparent focus:border-primary focus:ring-primary focus:ring-2 text-gray-800 w-full text-sm rounded-md focus:outline-none"
                             />
                             {errors.zipCode && <span className="text-red-500 text-sm">{errors.zipCode.message}</span>}
                           </div>
@@ -186,7 +193,7 @@ const Checkout: React.FC = () => {
                         <div className="flex gap-4 max-md:flex-col mt-8">
                           <button
                             type="submit"
-                            className="rounded-md px-6 py-3 w-full text-sm tracking-wide bg-primary hover:bg-primary-darl text-white"
+                            className="rounded-md px-6 py-3 w-full text-sm tracking-wide bg-primary hover:bg-primary-dark text-white"
                           >
                             Submit
                           </button>
