@@ -4,6 +4,7 @@ import { Product, useGetProductByIdQuery } from './../../third-party/redux/fakes
 import useCart from '../../hooks/useCart';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Spinner from '../../components/Spinner';
+import { capitalizeEachWord } from '../../utils';
 
 type RouteParams = {
   id: string;
@@ -57,7 +58,9 @@ const ProductDetails: React.FC = () => {
             src={data?.image}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">{data?.category}</h2>
+            <h2 className="text-sm title-font text-gray-500 tracking-widest">
+              {capitalizeEachWord(data?.category || '')}
+            </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{data?.title}</h1>
             <div className="flex mb-4">
               <span className="flex items-center">
