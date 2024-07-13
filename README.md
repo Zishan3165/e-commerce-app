@@ -6,6 +6,10 @@ Welcome to Z-Store, an e-commerce platform implemented using the Fakestore API. 
 
 https://e-commerce-app-fawn-alpha.vercel.app/
 
+## Credentials for login
+
+- Username : johnd Password: m38rmF$
+
 ## Tools and Libraries
 
 The following tools and libraries were used to build Z-Store:
