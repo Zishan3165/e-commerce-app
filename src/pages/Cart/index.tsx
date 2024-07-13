@@ -19,6 +19,8 @@ const Cart: React.FC = () => {
   const handleQuantityChange = (id: number, quantity: number) => {
     if (quantity > 0) {
       dispatch(updateCartQuantity({ id, quantity }));
+    } else {
+      dispatch(removeFromCart(id));
     }
   };
 
@@ -30,7 +32,7 @@ const Cart: React.FC = () => {
           {cartItems.length === 0 && (
             <div className="text-center py-24">
               <h2 className="text-2xl font-semibold text-gray-700">Cart is empty</h2>
-              <p className="text-gray-500 mt-2">Please add items to the card to proceed</p>
+              <p className="text-gray-500 mt-2">Please add items to the cart to proceed</p>
             </div>
           )}
           {cartItems.map((item) => (

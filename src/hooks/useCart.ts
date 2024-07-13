@@ -24,6 +24,8 @@ const useCart = (product: Product) => {
   const handleDecreaseQuantity = () => {
     if (cartItem && cartItem.quantity > 1) {
       dispatch(updateCartQuantity({ id: product.id, quantity: cartItem.quantity - 1 }));
+    } else {
+      dispatch(removeFromCart(product.id));
     }
   };
 

@@ -26,6 +26,8 @@ const useCartManager = () => {
     const cartItem = cartItems.find((item) => item.product.id === productId);
     if (cartItem && cartItem.quantity > 1) {
       dispatch(updateCartQuantity({ id: productId, quantity: cartItem.quantity - 1 }));
+    } else {
+      dispatch(removeFromCart(productId));
     }
   };
 
