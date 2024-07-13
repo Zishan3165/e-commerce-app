@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBagIcon, UserIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useGetCategoriesQuery } from '../../third-party/redux/fakestoreApi';
 import { capitalizeEachWord } from './../../utils/index';
 import { useSelector } from 'react-redux';
-import { RootState } from 'third-party/redux/store';
+import { RootState } from '../../third-party/redux/store';
 import useAuth from '../../hooks/useAuth';
 import Search from './Search';
 

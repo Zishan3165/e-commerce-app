@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGetCategoriesQuery } from '../../third-party/redux/fakestoreApi';
 import { capitalizeEachWord } from '../../utils';
 import Shimmer from '../../components/Shimmer';
