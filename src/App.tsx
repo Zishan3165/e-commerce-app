@@ -23,8 +23,8 @@ function App() {
       <Router>
         <SnackbarProvider>
           <Navbar />
-          <Routes>
-            <main>
+          <main>
+            <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/categories/:id" element={<ProductsByCategory />} />
@@ -46,8 +46,8 @@ function App() {
                 }
               />
               <Route path="*" element={<Navigate to="/" replace />} />
-            </main>
-          </Routes>
+            </Routes>
+          </main>
         </SnackbarProvider>
       </Router>
       <Footer />

@@ -40,27 +40,27 @@ Z-Store comes with a variety of features designed to provide a smooth and engagi
 
 Follow these steps to run Z-Store on your local machine:
 
-1. **Clone the project**:
+1. **Clone the project**
    ```sh
    git clone https://github.com/Zishan3165/e-commerce-app.git
    ```
-2. **Navigate to the project directory:**:
+2. **Navigate to the project directory:**
    ```sh
    cd e-commerce-app
    ```
-3. **Install Dependencies:**:
+3. **Install Dependencies:**
    ```sh
    npm install
    ```
-4. **Run the development server:**:
+4. **Run the development server:**
    ```sh
    npm run dev
    ```
-5. **Open your browser and navigate to:**:
+5. **Open your browser and navigate to:**
    ```sh
    http://localhost:5173
    ```
-6. **For running tests:**:
+6. **For running tests:**
    ```sh
    npm run test
    ```
