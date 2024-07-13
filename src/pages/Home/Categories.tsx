@@ -1,6 +1,7 @@
 import { useGetCategoriesQuery } from '../../third-party/redux/fakestoreApi';
 import { capitalizeEachWord } from '../../utils';
 import Shimmer from '../../components/Shimmer';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
   const { data: categories, isLoading } = useGetCategoriesQuery();
@@ -31,26 +32,26 @@ const Categories = () => {
         </div>
         <div className="flex flex-wrap -m-4">
           {categories?.map((category) => (
-            <div className="p-4 md:w-1/3">
+            <div className="p-4 md:w-1/3" key={category}>
               <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <h2 className="text-gray-900 text-lg title-font font-medium">{capitalizeEachWord(category)}</h2>
                 </div>
                 <div className="flex-grow">
-                  <a className="mt-3 text-primary inline-flex items-center">
+                  <Link to={`/categories/${category}`} className="mt-3 text-primary inline-flex items-center">
                     Explore
                     <svg
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       className="w-4 h-4 ml-2"
                       viewBox="0 0 24 24"
                     >
                       <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

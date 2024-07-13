@@ -10,6 +10,7 @@ import { SnackbarProvider } from 'notistack';
 import { useSelector } from 'react-redux';
 import { PropsWithChildren } from 'react';
 import { RootState } from './third-party/redux/store';
+import ProductsByCategory from './pages/ProductsByCategory/Index';
 
 const PrivateRoute = ({ children }: PropsWithChildren) => {
   const { token } = useSelector((state: RootState) => state.auth);
@@ -25,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/categories/:id" element={<ProductsByCategory />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/cart"
